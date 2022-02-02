@@ -1,7 +1,7 @@
 <h1>My Portfolio</h1>
 <div class='search-area'>
     <h3>Search Stock</h3>
-    <%= form_tag '#', method: :get do %>
+    <%= form_tag search_stock_path, method: :get,remote: true  do %>
         <div class="form-group row">
             <div class="col-sm-9 no-right-padding">
                 <%= text_field_tag :stock, params[:stock], placeholder: "stocker ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
@@ -15,3 +15,7 @@
         </div>
     <% end %>
 </div>
+<div id="results">
+
+</div>
+<%=render "users/result" %>
