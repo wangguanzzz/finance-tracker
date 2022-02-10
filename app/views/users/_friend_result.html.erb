@@ -1,13 +1,14 @@
 <div class="results-block">
     <%=render "layouts/message"%>
 </div>
-<%if @friend%>
+
 <div class="card card-header results-block">
-    <strong>email: </strong> <%=@friend.email %>
-    <strong>first name: </strong> <%=@friend.first_name %>
-    <strong>last name: </strong> <%=@friend.last_name %>
-    <% if current_user.can_follow_friend?(@friend.email) %>
+  <% @friends.each do | friend | %>
+    <strong>email: </strong> <%=friend.email %>
+    <strong>first name: </strong> <%=friend.first_name %>
+    <strong>last name: </strong> <%=friend.last_name %>
+    <% if current_user.can_follow_friend?(friend.email) %>
     <%= link_to "follow", '#', class: "btn btn-xs btn-success" , method: :post %>
     <% end %>
+  <%end %>
 </div>
-<%end %>
